@@ -17,9 +17,8 @@
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/test_ant.jar" basedir="build/classes">
             <manifest>
-                <attribute name="Test-Class" value="ua.com.alevel.Test"/>
-                <attribute name="Class-Path" value="libs/commons-lang3-3.11.jar"/>
-                <attribute name="Class-Path" value="libs/commons-math3-3.6.1.jar"/>
+                <attribute name="Main-Class" value="ua.com.alevel.Test"/>
+                <attribute name="Class-Path" value="libs/commons-lang3-3.11.jar libs/commons-math3-3.6.1.jar"/>
             </manifest>
             <zipgroupfileset dir="libs" includes="*.jar"/>
         </jar>

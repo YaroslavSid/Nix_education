@@ -1,10 +1,12 @@
-package src.ua.com.alevel;
+package ua.com.alevel;
 
-import src.ua.com.alevel.main.AntTwo;
+import ua.com.alevel.main.AntOne;
+import ua.com.alevel.main.AntTwo;
 
 public class Test {
     public static void main(String[] args) {
-        AntTwo antTwo =new AntTwo();
-        System.out.println(antTwo.ant());
+        AntTwo antTwo = new AntTwo();
+        AntOne antOne = new AntOne();
+        System.out.println(antTwo.ant() + antOne.ant());
     }
 }
