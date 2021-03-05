@@ -3,6 +3,8 @@ call start_terminal.bat
 pause
 cd ..
 cd ant_project
+call setantenv.bat
+pause
 call start_ant.bat
 pause
 cd ..
