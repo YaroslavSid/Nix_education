@@ -23,8 +23,8 @@ public class LessonTime {
         time.add("17:05");
         time.add("17:55");
         try {
-            System.out.println("This lesson ends at = "+time.get(Integer.parseInt(lesson)));
-        }catch (IndexOutOfBoundsException index){
+            System.out.println("This lesson ends at = " + time.get(Integer.parseInt(lesson)));
+        } catch (IndexOutOfBoundsException index) {
             System.out.println("Lessons are over");
         }
     }

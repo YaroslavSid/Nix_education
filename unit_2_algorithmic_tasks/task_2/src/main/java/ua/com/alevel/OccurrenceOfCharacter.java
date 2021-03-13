@@ -14,15 +14,14 @@ public class OccurrenceOfCharacter {
         System.out.println("Enter data: ");
 
         HashMap<String, Integer> hashMap = new HashMap<>();
-        String encoding = System.getProperty("console.encoding", "utf-8");
-        Scanner scanner = new Scanner(System.in, encoding);
+        Scanner scanner = new Scanner(System.in);
 
         while (exit) {
             line = scanner.nextLine();
             if (line.trim().isEmpty()) {
                 System.err.println("The line is  empty! Try again ");
             } else {
-                Pattern pattern = Pattern.compile("[a-zA-Zа-яА-яёЁ]");
+                Pattern pattern = Pattern.compile("[a-zA-Z]");
                 Matcher matcher = pattern.matcher(line);
 
                 while (matcher.find()) {
