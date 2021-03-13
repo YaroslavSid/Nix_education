@@ -11,7 +11,6 @@ public class LessonTime {
         String lesson = scanner.next();
 
         ArrayList<String> time = new ArrayList<>();
-        time.add("no lessons");
         time.add("9:45");
         time.add("10:35");
         time.add("11:35");
@@ -23,7 +22,7 @@ public class LessonTime {
         time.add("17:05");
         time.add("17:55");
         try {
-            System.out.println("This lesson ends at = " + time.get(Integer.parseInt(lesson)));
+            System.out.println("This lesson ends at = " + time.get(Integer.parseInt(lesson) - 1 ) );
         } catch (IndexOutOfBoundsException index) {
             System.out.println("Lessons are over");
         }
