@@ -10,35 +10,35 @@ import java.util.regex.Pattern;
 public class DefaultConsoleService implements ConsoleService {
     int first;
     int second;
-    String c;
+    String condition;
 
     @Override
     public Implementation check() {
 
         System.out.println("Enter expression (for example 2+2): ");
         Scanner scanner = new Scanner(System.in);
-        String x = scanner.nextLine();
+        String line = scanner.nextLine();
 
 
         Pattern pattern = Pattern.compile("(\\d)+");
-        Matcher p = pattern.matcher(x);
+        Matcher matcher = pattern.matcher(line);
 
-        if (p.find()) {
-            String a = p.group();
+        if (matcher.find()) {
+            String a = matcher.group();
             first = Integer.parseInt(a);
         }
-        if (p.find()) {
-            String b = p.group();
+        if (matcher.find()) {
+            String b = matcher.group();
             second = Integer.parseInt(b);
         }
 
         Pattern pattern1 = Pattern.compile("(?=\\s)*([+\\-*/])(?=\\s)*");
-        Matcher d = pattern1.matcher(x);
-        if (d.find()) {
-            c = d.group();
+        Matcher matcherCondition = pattern1.matcher(line);
+        if (matcherCondition.find()) {
+            condition = matcherCondition.group();
         } else {
             System.err.println("Operator not found");
         }
-        return new Implementation(first, c, second);
+        return new Implementation(first, condition, second);
     }
 }

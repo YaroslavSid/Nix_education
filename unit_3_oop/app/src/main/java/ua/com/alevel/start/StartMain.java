@@ -15,8 +15,8 @@ public class StartMain {
 
     public void run(){
         Implementation implementation =  service.check();
-        int first = implementation.getA();
-        int second = implementation.getB();
+        int first = implementation.getFirstValue();
+        int second = implementation.getSecondValue();
         String condition = implementation.getCondition();
 
         BigInteger firstValue = new BigInteger(String.valueOf(first));
