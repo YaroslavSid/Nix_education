@@ -1,4 +1,4 @@
-package ua.com.alevel.impl;
+package ua.com.alevel;
 
 import ua.com.alevel.CalcLibService;
 
