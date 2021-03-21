@@ -13,30 +13,30 @@ public class StartMain {
     public final ConsoleService service = ConsoleFactory.getInstance().getCalcLibService();
 
 
-    public void run(){
-        Implementation implementation =  service.check();
-        int first = implementation.getFirstValue();
-        int second = implementation.getSecondValue();
+    public void run() {
+        Implementation implementation = service.check();
+        String first = implementation.getFirstValue();
+        String second = implementation.getSecondValue();
         String condition = implementation.getCondition();
 
-        BigInteger firstValue = new BigInteger(String.valueOf(first));
-        BigInteger secondValue = new BigInteger(String.valueOf(second));
+        BigInteger firstValue = new BigInteger(first);
+        BigInteger secondValue = new BigInteger(second);
 
-        switch (condition){
+        switch (condition) {
             case "+":
-                BigInteger a = calcLib.sum(firstValue,secondValue);
+                BigInteger a = calcLib.sum(firstValue, secondValue);
                 System.out.println("Answer = " + a);
                 break;
             case "*":
-                BigInteger b = calcLib.multi(firstValue,secondValue);
+                BigInteger b = calcLib.multi(firstValue, secondValue);
                 System.out.println("Answer = " + b);
                 break;
             case "-":
-                BigInteger c =calcLib.subtract(firstValue,secondValue);
+                BigInteger c = calcLib.subtract(firstValue, secondValue);
                 System.out.println("Answer = " + c);
                 break;
             case "/":
-                BigInteger d =calcLib.divide(firstValue,secondValue);
+                BigInteger d = calcLib.divide(firstValue, secondValue);
                 System.out.println("Answer = " + d);
                 break;
         }

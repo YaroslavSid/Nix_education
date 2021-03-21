@@ -1,11 +1,23 @@
 package ua.com.alevel.impl.helpforimpl;
 
 public class Implementation {
-    public int getFirstValue() {
+
+    private final String condition;
+    private final String firstValue;
+    private final String secondValue;
+
+    public Implementation(String firstValue, String condition, String secondValue){
+        this.firstValue = firstValue;
+        this.condition = condition;
+        this.secondValue = secondValue;
+
+    }
+
+    public String getFirstValue() {
         return firstValue;
     }
 
-    public int getSecondValue() {
+    public String getSecondValue() {
         return secondValue;
     }
 
@@ -13,14 +25,6 @@ public class Implementation {
         return condition;
     }
 
-    int firstValue;
-    int secondValue;
-    String condition;
 
-    public Implementation(int firstValue, String condition, int secondValue){
-        this.firstValue = firstValue;
-        this.condition = condition;
-        this.secondValue = secondValue;
 
-    }
 }

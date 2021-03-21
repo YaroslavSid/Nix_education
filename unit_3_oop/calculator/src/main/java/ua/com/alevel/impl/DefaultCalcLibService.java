@@ -4,8 +4,8 @@ import ua.com.alevel.CalcLibService;
 
 import java.math.BigInteger;
 
-
 public class DefaultCalcLibService implements CalcLibService {
+
     @Override
     public BigInteger sum(BigInteger first, BigInteger second) {
         return first.add(second);
@@ -30,4 +30,5 @@ public class DefaultCalcLibService implements CalcLibService {
             throw e;
         }
     }
+
 }

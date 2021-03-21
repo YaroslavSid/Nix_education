@@ -8,8 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DefaultConsoleService implements ConsoleService {
-    int first;
-    int second;
+    String first;
+    String second;
     String condition;
 
     @Override
@@ -19,17 +19,14 @@ public class DefaultConsoleService implements ConsoleService {
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
 
-
         Pattern pattern = Pattern.compile("(\\d)+");
         Matcher matcher = pattern.matcher(line);
 
         if (matcher.find()) {
-            String a = matcher.group();
-            first = Integer.parseInt(a);
+            first = matcher.group();
         }
         if (matcher.find()) {
-            String b = matcher.group();
-            second = Integer.parseInt(b);
+            second = matcher.group();
         }
 
         Pattern pattern1 = Pattern.compile("(?=\\s)*([+\\-*/])(?=\\s)*");
