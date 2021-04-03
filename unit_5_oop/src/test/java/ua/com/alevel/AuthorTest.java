@@ -20,6 +20,7 @@ public class AuthorTest {
     private static final String lastName = "LastName";
     private static final String bookName = "BookName";
 
+
     @BeforeAll
     public static void init() {
         for (int i = 0; i < 10; i++) {

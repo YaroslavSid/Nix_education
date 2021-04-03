@@ -10,12 +10,15 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BookTest {
     private static final BookDAO bookImp = new BookImp();
     private static final String nameBook = "Name Book";
     private static final String nameAuthor = "Name Author";
+    private Logger log;
 
     @BeforeAll
     public static void init() {
@@ -74,4 +77,12 @@ public class BookTest {
         bookImp.delete(1);
         Assertions.assertTrue(size != bookImp.read().size());
     }
+
+    @Order(0)
+    private  void closeHandler() {
+        for (Handler h : log.getHandlers()) {
+            h.close();   //must call h.close or a .LCK file will remain.
+        }
+    }
+
 }
