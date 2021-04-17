@@ -8,7 +8,7 @@ import ua.com.alevel.exception.ClassException;
 import java.util.Scanner;
 
 @Getter
-public class WorkWithDate {
+public class AddAndSubtractDate {
     static long COUNT_DAYS_IN_LEAP_YEAR = 366;
     static long COUNT_DAYS_IN_YEAR = 365;
     static long COUNT_MS_IN_DAY = 86400000L;
@@ -26,7 +26,7 @@ public class WorkWithDate {
 
     public Controller origin;
 
-    public WorkWithDate(String inputData) {
+    public AddAndSubtractDate(String inputData) {
         String[] input = inputData.split("[/ :]");
         days = Integer.parseInt(input[0]);
         months = Integer.parseInt(input[1]);
@@ -43,104 +43,105 @@ public class WorkWithDate {
     }
 
 
-    //-------------------------------------------------------------------------------------------------------------
+    public void addData(AddAndSubtractDate addAndSubtractDate, String time) {
 
-
-    public void addData(WorkWithDate workWithDate, String time) {
         long minuteForAdd;
         long secondForAdd;
         long millisecondForAdd;
         long dayForAdd = 0;
 
+       try {
+           String[] input = time.split("[:]");
+           minuteForAdd = Integer.parseInt(input[0]);
+           secondForAdd = Integer.parseInt(input[1]);
+           millisecondForAdd = Integer.parseInt(input[2]);
 
-        String[] input = time.split("[:]");
-        minuteForAdd = Integer.parseInt(input[0]);
-        secondForAdd = Integer.parseInt(input[1]);
-        millisecondForAdd = Integer.parseInt(input[2]);
+           long millisecond = addAndSubtractDate.millisecond + millisecondForAdd;
+           while (millisecond > 999) {
+               millisecond = millisecond - 1000;
+               secondForAdd++;
+           }
+           long seconds = addAndSubtractDate.second + secondForAdd;
+           while (seconds > 59) {
+               seconds = seconds - 60;
+               minuteForAdd++;
+           }
+           long minutes = addAndSubtractDate.minute + minuteForAdd;
+           while (minutes > 59) {
+               minutes = minutes - 60;
+               hours++;
+           }
 
-        long millisecond = workWithDate.millisecond + millisecondForAdd;
-        while (millisecond > 999) {
-            millisecond = millisecond - 1000;
-            secondForAdd++;
-        }
-        long seconds = workWithDate.second + secondForAdd;
-        while (seconds > 59) {
-            seconds = seconds - 60;
-            minuteForAdd++;
-        }
-        long minutes = workWithDate.minute + minuteForAdd;
-        while (minutes > 59) {
-            minutes = minutes - 60;
-            hours++;
-        }
+           while (hours > 24) {
+               hours = hours - 24;
+               dayForAdd++;
+           }
+           AddDays date = new AddDays((int) addAndSubtractDate.months, (int) addAndSubtractDate.days, (int) addAndSubtractDate.years);
+           date.addDaysMethods((int) dayForAdd);
 
-        while (hours > 24) {
-            hours = hours - 24;
-            dayForAdd++;
-        }
-        AddDays date = new AddDays((int) workWithDate.months, (int) workWithDate.days, (int) workWithDate.years);
-        date.addDaysMethods((int) dayForAdd);
-
-        int[] fields = date.getAddDays();
-        workWithDate.months = fields[0];
-        workWithDate.years = fields[2];
-        workWithDate.days = fields[1];
-        workWithDate.second = second;
-        workWithDate.minute = minute;
-        workWithDate.millisecond = millisecond;
-        workWithDate.output();
+           int[] fields = date.getAddDays();
+           addAndSubtractDate.months = fields[0];
+           addAndSubtractDate.years = fields[2];
+           addAndSubtractDate.days = fields[1];
+           addAndSubtractDate.second = seconds;
+           addAndSubtractDate.minute = minutes;
+           addAndSubtractDate.millisecond = millisecond;
+           addAndSubtractDate.output();
+       }catch (Exception e){
+           System.out.println("Check if the input is correct");
+       }
     }
 
     public void replaceHoursToMinute(long hours) {
         System.out.println("Minute = " + hours * 60);
     }
 
-    public void addYears(WorkWithDate workWithDate, long years) {
-        workWithDate.years = workWithDate.years + years;
-        workWithDate.output();
+    public void addYears(AddAndSubtractDate addAndSubtractDate, long years) {
+        addAndSubtractDate.years = addAndSubtractDate.years + years;
+        addAndSubtractDate.output();
     }
 
-    public void addCenturies(WorkWithDate workWithDate, long centuries) {
+    public void addCenturies(AddAndSubtractDate addAndSubtractDate, long centuries) {
         centuries = centuries * 100;
-        workWithDate.years = workWithDate.years + centuries;
-        workWithDate.output();
+        addAndSubtractDate.years = addAndSubtractDate.years + centuries;
+        addAndSubtractDate.output();
     }
 
     //-------------------------------------------------------------------------------
 
 
-    public void subtractMilliseconds(WorkWithDate workWithDate, long milliseconds) throws ClassException {
-        if (workWithDate.millisecond - milliseconds >= 0) {
-            workWithDate.millisecond -= milliseconds;
-            workWithDate.output();
+    public void subtractMilliseconds(AddAndSubtractDate addAndSubtractDate, long milliseconds) throws ClassException {
+        if (addAndSubtractDate.millisecond - milliseconds >= 0) {
+            addAndSubtractDate.millisecond -= milliseconds;
+            addAndSubtractDate.output();
         } else {
             throw new ClassException("Can't contain negative milliseconds");
         }
     }
 
-    public void subtractSeconds(WorkWithDate workWithDate, long seconds) throws ClassException {
-        if (workWithDate.second - seconds >= 0) {
-            workWithDate.second = workWithDate.second - seconds;
-            workWithDate.output();
+    public void subtractSeconds(AddAndSubtractDate addAndSubtractDate, long seconds) throws ClassException {
+        if (addAndSubtractDate.second - seconds >= 0) {
+            addAndSubtractDate.second = addAndSubtractDate.second - seconds;
+            addAndSubtractDate.output();
         } else {
             throw new ClassException("Can't contain negative seconds");
         }
     }
 
-    public void subtractMinutes(WorkWithDate workWithDate, long minutes) throws ClassException {
-        if (workWithDate.minute - minutes >= 0) {
-            workWithDate.minute = workWithDate.minute - minutes;
-            workWithDate.output();
+    public void subtractMinutes(AddAndSubtractDate addAndSubtractDate, long minutes) throws ClassException {
+        if (addAndSubtractDate.minute - minutes >= 0) {
+            addAndSubtractDate.minute = addAndSubtractDate.minute - minutes;
+            addAndSubtractDate.output();
         } else {
             throw new ClassException("Can't contain negative minutes");
         }
     }
 
-    public void subtractDays(WorkWithDate workWithDate, long day) throws ClassException {
+    public void subtractDays(AddAndSubtractDate addAndSubtractDate, long day) throws ClassException {
         try {
-            if (workWithDate.days - day >= 0) {
-                workWithDate.days = workWithDate.days - day;
-                workWithDate.output();
+            if (addAndSubtractDate.days - day >= 0) {
+                addAndSubtractDate.days = addAndSubtractDate.days - day;
+                addAndSubtractDate.output();
             } else {
                 throw new ClassException("Can't contain negative days. Try again");
             }
@@ -153,37 +154,20 @@ public class WorkWithDate {
 
     }
 
-    public void subtractYears(WorkWithDate workWithDate, long year) throws ClassException {
-        if (workWithDate.years - year >= 0) {
-            workWithDate.years = workWithDate.years - year;
-            workWithDate.output();
+    public void subtractYears(AddAndSubtractDate addAndSubtractDate, long year) throws ClassException {
+        if (addAndSubtractDate.years - year >= 0) {
+            addAndSubtractDate.years = addAndSubtractDate.years - year;
+            addAndSubtractDate.output();
         } else {
             throw new ClassException("Can't contain negative years");
         }
 
     }
 
-    public void subtractCenturies(WorkWithDate workWithDate, long centuries) throws ClassException {
+    public void subtractCenturies(AddAndSubtractDate addAndSubtractDate, long centuries) throws ClassException {
         centuries = centuries * 100;
-        subtractYears(workWithDate, centuries);
+        subtractYears(addAndSubtractDate, centuries);
     }
-
-    //----------------------------------------------------------------------------
-
-//    @Override
-//    public int compareTo(WorkWithDate o) {
-//        int res = (int) (this.years - o.years);
-//        if (res == 0) {
-//            res = (int) (this.months - o.months);
-//        }
-//        if (res == 0) {
-//            res = (int) (this.days - o.days);
-//        }
-//        if (res == 0) {
-//            res = (int) (this.minute - o.minute);
-//        }
-//        return res;
-//    }
 
 
     public void output() {

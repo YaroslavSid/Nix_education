@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ConvertAndFindBetween {
+public class ConvertAndFindDifferentBetweenThem {
 
 
     private static final long startYear = 1970L;
@@ -37,7 +37,7 @@ public class ConvertAndFindBetween {
     public long millis;
 
     // format dd/mm/yyyy mm:ss:ms
-    public ConvertAndFindBetween(String date) {
+    public ConvertAndFindDifferentBetweenThem(String date) {
         int years;
         int months;
         int days;
@@ -61,7 +61,7 @@ public class ConvertAndFindBetween {
         return millis;
     }
 
-    public void differenceBetweenDate(ConvertAndFindBetween startDate, ConvertAndFindBetween finishDate) {
+    public void differenceBetweenDate(ConvertAndFindDifferentBetweenThem startDate, ConvertAndFindDifferentBetweenThem finishDate) {
         long firstDateInMs = startDate.millis;
         long secondDateInMs = finishDate.millis;
         long differenceInMs = secondDateInMs - firstDateInMs;
