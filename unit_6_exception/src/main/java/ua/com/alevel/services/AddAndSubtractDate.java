@@ -8,7 +8,7 @@ import ua.com.alevel.exception.ClassException;
 import java.util.Scanner;
 
 @Getter
-public class WorkWithDate implements Comparable<WorkWithDate> {
+public class WorkWithDate {
     static long COUNT_DAYS_IN_LEAP_YEAR = 366;
     static long COUNT_DAYS_IN_YEAR = 365;
     static long COUNT_MS_IN_DAY = 86400000L;
@@ -170,20 +170,20 @@ public class WorkWithDate implements Comparable<WorkWithDate> {
 
     //----------------------------------------------------------------------------
 
-    @Override
-    public int compareTo(WorkWithDate o) {
-        int res = (int) (this.years - o.years);
-        if (res == 0) {
-            res = (int) (this.months - o.months);
-        }
-        if (res == 0) {
-            res = (int) (this.days - o.days);
-        }
-        if (res == 0) {
-            res = (int) (this.minute - o.minute);
-        }
-        return res;
-    }
+//    @Override
+//    public int compareTo(WorkWithDate o) {
+//        int res = (int) (this.years - o.years);
+//        if (res == 0) {
+//            res = (int) (this.months - o.months);
+//        }
+//        if (res == 0) {
+//            res = (int) (this.days - o.days);
+//        }
+//        if (res == 0) {
+//            res = (int) (this.minute - o.minute);
+//        }
+//        return res;
+//    }
 
 
     public void output() {
