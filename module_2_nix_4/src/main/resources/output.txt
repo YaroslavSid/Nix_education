@@ -1,1 +1,28 @@
+Task1
+2020/04/01
+02.04.2020
+03/04/2020
+04::04::2020
+04-05-2020
 
+answer: 
+20200401
+20200403
+20200405
+
+----------------------------
+Task2
+Yaroslav
+Ali
+Yaroslav
+Edd
+Egor
+Egor
+
+answer: 
+Ali
+----------------------------
+Task3
+answer: 
+gdansk->warszawa best way = 3
+bydgoszcz->warszawa best way = 2

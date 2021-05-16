@@ -43,13 +43,15 @@ public class WorkWithFiles {
 
 
     private void search(List<String> cities, int[][] values, int r, String directions) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_TXT))) {
-
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_TXT,true))) {
+            writer.append("Task3").append(System.lineSeparator());
+            writer.append("answer: ").append(System.lineSeparator());
             StringTokenizer tokens = new StringTokenizer(directions, ";");
             for (int j = 0; j < r; j++) {
                 String[] fromTo = tokens.nextToken().split(" ");
 
                 String temp1 = fromTo[0];
+                writer.append(temp1).append("->");
                 int start = 0;
                 for (int i = 0; i < cities.size(); i++) {
                     if (cities.get(i).equals(temp1)) {
@@ -58,6 +60,7 @@ public class WorkWithFiles {
                 }
 
                 String temp2 = fromTo[1];
+                writer.append(temp2).append(" ");
                 int end = 0;
                 for (int i = 0; i < cities.size(); i++) {
                     if (cities.get(i).equals(temp2)) {
@@ -65,8 +68,8 @@ public class WorkWithFiles {
                     }
                 }
 
-                writer.append(graph.task(start, end, values))
-                        .append("\n");
+                writer.append("best way = ");
+                writer.append(graph.task(start, end, values)).append(System.lineSeparator());
             }
         }
 
