@@ -1,6 +1,5 @@
 package ua.com.alevel.mapper;
 
-import lombok.var;
 import ua.com.alevel.Keys;
 import ua.com.alevel.table.Table;
 
@@ -24,10 +23,10 @@ public class PropertyBind {
                     if (field.isAnnotationPresent(Keys.class)) {
                         Keys property = field.getAnnotation(Keys.class);
                         if (property == null) continue;
-                        var value = table.getCell(i, property.value());
+                        String value = table.getCell(i, property.value());
                         if (value == null) continue;
                         field.setAccessible(true);
-                        var type = field.getType().getName();
+                        String type = field.getType().getName();
                         if (int.class.getName().equals(type)) {
                             field.setInt(object, Integer.parseInt(value));
                         } else if (long.class.getName().equals(type)) {

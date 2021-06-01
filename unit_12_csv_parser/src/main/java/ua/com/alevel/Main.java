@@ -10,7 +10,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Table table = new Table(CSVParser.getTable());
+        CSVParser parser = new CSVParser();
+        Table table = new Table(parser.getTable());
         List<Cities> citiesList = new PropertyBind().initializeProperties(Cities.class, table);
         for (Cities cities : citiesList) {
             System.out.println(cities);
