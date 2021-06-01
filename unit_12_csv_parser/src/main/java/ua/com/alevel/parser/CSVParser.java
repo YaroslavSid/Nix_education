@@ -10,10 +10,10 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class CSVParser {
-    public String[][] getTable(){
+    public String[][] getTable(String path){
         String[] row;
         LinkedList<String[]> rows = new LinkedList<>();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("cities.csv")) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(path)) {
             try (CSVReader reader = new CSVReader(new InputStreamReader(Objects.requireNonNull(input)))) {
                 while ((row = reader.readNext()) != null) {
                     rows.addLast(row);
