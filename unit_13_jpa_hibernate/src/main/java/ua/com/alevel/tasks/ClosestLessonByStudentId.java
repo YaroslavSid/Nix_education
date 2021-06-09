@@ -1,4 +1,4 @@
-package ua.com.alevel;
+package ua.com.alevel.tasks;
 
 import org.hibernate.Session;
 import ua.com.alevel.entity.Lesson;
@@ -26,11 +26,12 @@ public class ClosestLessonByStudentId {
                 .getGroupStudent()
                 .getLessonSet();
 
-        Lesson closetLesson = lessonSet
+       Lesson closetLesson = lessonSet
                 .stream()
                 .filter(l -> l.getTime().getEpochSecond() > Instant.now().getEpochSecond())
                 .min(Comparator.comparing(Lesson::getTime))
                 .get();
+
 
 
         Date myDate = Date.from(closetLesson.getTime());

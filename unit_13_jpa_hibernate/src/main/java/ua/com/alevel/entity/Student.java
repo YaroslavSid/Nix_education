@@ -2,6 +2,7 @@ package ua.com.alevel.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import ua.com.alevel.entity.number.entity.Mark;
 
 import javax.persistence.*;
 

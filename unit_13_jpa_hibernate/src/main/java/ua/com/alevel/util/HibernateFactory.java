@@ -3,6 +3,10 @@ package ua.com.alevel.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ua.com.alevel.entity.*;
+import ua.com.alevel.entity.number.entity.Course;
+import ua.com.alevel.entity.number.entity.Mark;
+
+import java.io.InputStream;
 
 public class HibernateFactory {
 
@@ -15,7 +19,7 @@ public class HibernateFactory {
         if (sessionFactory == null){
             try {
                 sessionFactory = new Configuration()
-                        .configure("hibernate.cfg.xml")
+                        .configure()
                         .addAnnotatedClass(Topic.class)
                         .addAnnotatedClass(Course.class)
                         .addAnnotatedClass(Lecturer.class)
@@ -25,7 +29,7 @@ public class HibernateFactory {
                         .addAnnotatedClass(Group.class)
                         .buildSessionFactory();
             }catch (Exception e){
-                System.out.println("ggggg"+e);
+                System.out.println("Problem with configuration " + e);
             }
         }
         return sessionFactory;

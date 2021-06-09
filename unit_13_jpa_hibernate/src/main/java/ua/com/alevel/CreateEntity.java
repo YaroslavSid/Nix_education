@@ -2,18 +2,21 @@ package ua.com.alevel;
 
 import org.hibernate.Session;
 import ua.com.alevel.entity.*;
+import ua.com.alevel.entity.number.entity.Course;
+import ua.com.alevel.entity.number.entity.Mark;
 import ua.com.alevel.util.HibernateFactory;
 
 import java.time.Instant;
 
 
-public class Main {
+public class CreateEntity {
+
     public static void main(String[] args) {
         try (Session session = HibernateFactory.getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
 
-            Course course1 = new Course("1");
-            Course course2 = new Course("2");
+            Course course1 = new Course(1);
+            Course course2 = new Course(2);
 
             session.save(course1);
             session.save(course2);

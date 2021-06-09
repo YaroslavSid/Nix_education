@@ -26,7 +26,6 @@ public class Group extends FieldEntity{
 
     public Group(String name) {
         super(name);
-
     }
 
     public Group() {

@@ -1,14 +1,10 @@
-package ua.com.alevel;
+package ua.com.alevel.tasks;
 
 import org.hibernate.Session;
-import sun.security.pkcs11.wrapper.Functions;
 import ua.com.alevel.entity.Group;
 import ua.com.alevel.entity.Lecturer;
-import ua.com.alevel.entity.Lesson;
 import ua.com.alevel.entity.Student;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -46,14 +42,14 @@ public class BestLecturerGroup {
         if (bestGroup.isPresent()) {
             Map.Entry<Group, Double> best = bestGroup.get();
 
-            String course = best.getKey()
+            Integer course = best.getKey()
                     .getLessonSet()
                     .stream()
                     .filter(lesson -> lesson.getCourse()  != null)
                     .findFirst()
                     .get()
                     .getCourse()
-                    .getName();
+                    .getNumberCourse();
 
             System.out.println("Best group name: " + best.getKey().getName() + " on " + course +
                     " course with average mark " + best.getValue());
